@@ -12,7 +12,6 @@ export default function Select(props: ISelectProps) {
   const [dropdownVisible, setDropdownVisible] = createSignal(false);
   const [filteredItems, setFilteredItems] = createSignal(props.items);
   const [selectedItem, setSelectedItem] = createSignal(false);
-  
 
   const [inputValue, setInputValue] = createSignal("");
 
@@ -24,11 +23,12 @@ export default function Select(props: ISelectProps) {
       setDropdownVisible(false);
     }
   };
-  createEffect(() => {
-    setFilteredItems(
-      props.items.filter((item) => item.label.includes(inputValue()))
-    );
-  });
+  //   createEffect(() => {
+  //     setFilteredItems(
+  //       props.items.filter((item) => item.label.includes(inputValue()))
+  //     );
+  //     console.log("filteredItems", filteredItems());
+  //   });
 
   createEffect(() => {
     document.addEventListener("click", handleDocumentClick);
@@ -37,6 +37,13 @@ export default function Select(props: ISelectProps) {
       document.removeEventListener("click", handleDocumentClick);
     };
   });
+  const handleInputChange = (e: any) => {
+    setInputValue(e.target.value);
+    console.log("inputValue", inputValue());
+    setFilteredItems(
+      props.items.filter((item) => item.label.includes(inputValue()))
+    );
+  }
   return (
     <div class="relative select-container">
       <input
@@ -48,7 +55,7 @@ export default function Select(props: ISelectProps) {
           setDropdownVisible(true);
         }}
         value={inputValue()}
-        onChange={(e) => setInputValue(e.target.value)}
+        onInput={handleInputChange}
       />
       <Show when={props.value?.id !== 0 && selectedItem() === true}>
         <li
