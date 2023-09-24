@@ -18,8 +18,6 @@ export default function Select(props: ISelectProps) {
   const handleDocumentClick = (e: MouseEvent) => {
     const target = e.target as HTMLElement;
     if (!target.closest(".select-container")) {
-      console.log("value", props.value);
-      console.log(inputValue());
       setDropdownVisible(false);
     }
   };
