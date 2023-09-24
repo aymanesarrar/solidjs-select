@@ -23,12 +23,6 @@ export default function Select(props: ISelectProps) {
       setDropdownVisible(false);
     }
   };
-  //   createEffect(() => {
-  //     setFilteredItems(
-  //       props.items.filter((item) => item.label.includes(inputValue()))
-  //     );
-  //     console.log("filteredItems", filteredItems());
-  //   });
 
   createEffect(() => {
     document.addEventListener("click", handleDocumentClick);
@@ -43,7 +37,7 @@ export default function Select(props: ISelectProps) {
     setFilteredItems(
       props.items.filter((item) => item.label.includes(inputValue()))
     );
-  }
+  };
   return (
     <div class="relative select-container">
       <input
@@ -65,7 +59,6 @@ export default function Select(props: ISelectProps) {
             setSelectedItem(false);
             setInputValue("");
           }}
-          //   value={props.value?.id}
           class="px-8 py-3 text-[#FEFFFE] flex items-center gap-4 hover:cursor-pointer hover:rounded-lg bg-[#272835] absolute w-full top-0 rounded-t-lg"
         >
           <VsCircleFilled color={props.value?.color} /> {props.value?.label}
