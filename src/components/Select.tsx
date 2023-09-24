@@ -12,6 +12,7 @@ export default function Select(props: ISelectProps) {
   const [dropdownVisible, setDropdownVisible] = createSignal(false);
   const [filteredItems, setFilteredItems] = createSignal(props.items);
   const [selectedItem, setSelectedItem] = createSignal(false);
+  
 
   const [inputValue, setInputValue] = createSignal("");
 
@@ -46,6 +47,7 @@ export default function Select(props: ISelectProps) {
           setFocused(true);
           setDropdownVisible(true);
         }}
+        value={inputValue()}
         onChange={(e) => setInputValue(e.target.value)}
       />
       <Show when={props.value?.id !== 0 && selectedItem() === true}>
@@ -54,6 +56,7 @@ export default function Select(props: ISelectProps) {
             setFocused(true);
             setDropdownVisible(true);
             setSelectedItem(false);
+            setInputValue("");
           }}
           //   value={props.value?.id}
           class="px-8 py-3 text-[#FEFFFE] flex items-center gap-4 hover:cursor-pointer hover:rounded-lg bg-[#272835] absolute w-full top-0 rounded-t-lg"
