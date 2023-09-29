@@ -31,7 +31,7 @@ export default function Select(props: ISelectProps) {
   });
   const handleInputChange = (e: any) => {
     setInputValue(e.target.value);
-    console.log("inputValue", inputValue());
+    
     setFilteredItems(
       props.items.filter((item) => item.label.includes(inputValue()))
     );

@@ -30,7 +30,7 @@ function App() {
   ]);
   const onChange = (value: string | null) => {
     const item = items().find((item) => item.id === Number(value));
-    console.log(item);
+    
     if (item) {
       setValue(item);
     }
