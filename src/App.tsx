@@ -1,6 +1,5 @@
-import { For, Show, createMemo, createSignal } from "solid-js";
+import {  createMemo, createSignal } from "solid-js";
 import "./App.css";
-import VsCircleFilled from "./components/Circle";
 import Select from "./components/Select";
 
 const COLORS = {
